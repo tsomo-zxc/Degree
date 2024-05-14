@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Degree.MVVM.Views"
+             x:Class="Degree.AppShell"
+             Title="AppShell">
+    <TabBar>
+        <ShellContent Title="Home" Icon="home.png" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Title="Orders" Icon="order.png" ContentTemplate="{DataTemplate local:OrderPage}" />
+        <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </TabBar>
+</Shell>

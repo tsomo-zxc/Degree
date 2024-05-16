@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Degree.MVVM.Views.ProfilePage"
+             x:Class="Degree.MVVM.Views.ProfilePage"            
              Title="ProfilePage">
-    <StackLayout>
-        <Label Text="Welcome to the Profile Page" 
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
+    
+    <StackLayout Padding="10">       
+        
+        <ContentView IsVisible="{Binding IsLoggedOut}">
+            <StackLayout Padding="15" >
+                <Button Margin="10" Text="Register" Command="{Binding NavigateToRegisterCommand} " />
+                <Button Text="Login" Command="{Binding NavigateToLoginCommand}" />
+            </StackLayout>
+        </ContentView>
+        <ContentView IsVisible="{Binding IsLoggedIn}">
+            <StackLayout Padding="15">
+                <Label Text="{Binding Username}" FontSize="Medium" />
+                <Label Text="{Binding Email}" FontSize="Medium" />
+                <Button Text="Log out" Command="{Binding LogOutCommand}"/>
+            </StackLayout>
+        </ContentView>
     </StackLayout>
 </ContentPage>

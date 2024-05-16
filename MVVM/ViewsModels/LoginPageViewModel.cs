@@ -1,4 +1,6 @@
-﻿using PropertyChanged;
+﻿using Degree.MVVM.Models;
+using Degree.MVVM.Views;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,7 +53,7 @@ namespace Degree.MVVM.ViewsModels
 
             try
             {
-                var user = App.UserRepository.GetItem(x => x.Username == _username);
+                User user = App.UserRepository.GetItem(x => x.Username == _username);
                 if (user != null && user.PasswordHash == HashPassword(_password))
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Login successful", "OK");
@@ -61,11 +63,15 @@ namespace Degree.MVVM.ViewsModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Invalid username or password", "OK");
                 }
+                Preferences.Default.Set("IsLoggedIn", true);                
+                Preferences.Default.Set("Username", _username);                
+                await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
             }
+            
         }
 
         private string HashPassword(string password)

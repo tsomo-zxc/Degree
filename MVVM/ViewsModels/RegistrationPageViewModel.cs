@@ -1,4 +1,5 @@
 ﻿using Degree.MVVM.Models;
+using Degree.MVVM.Views;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,7 @@ namespace Degree.MVVM.ViewsModels
                 get => _username;
                 set
                 {
-                    _username = value;
-                    
+                    _username = value;                    
                 }
             }
 
@@ -37,8 +37,7 @@ namespace Degree.MVVM.ViewsModels
                 get => _email;
                 set
                 {
-                    _email = value;
-                   
+                    _email = value;                   
                 }
             }
 
@@ -47,8 +46,7 @@ namespace Degree.MVVM.ViewsModels
                 get => _password;
                 set
                 {
-                    _password = value;
-                   
+                    _password = value;                   
                 }
             }
 
@@ -57,8 +55,7 @@ namespace Degree.MVVM.ViewsModels
                 get => _confirmPassword;
                 set
                 {
-                    _confirmPassword = value;
-                   
+                    _confirmPassword = value;                   
                 }
             }
 
@@ -95,9 +92,13 @@ namespace Degree.MVVM.ViewsModels
                         await Application.Current.MainPage.DisplayAlert("Error", "Username or Email already exists", "OK");
                         return;
                     }
-
+                        
                     App.UserRepository.SaveItem(user);
+                    //Preferences.Default.Set("IsLoggedIn", true);
+                    //Preferences.Default.Set("Username", user.Username);            
+
                     await Application.Current.MainPage.DisplayAlert("Success", "User registered successfully", "OK");
+                    Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
                     ClearFields();
                 }
                 catch (Exception ex)

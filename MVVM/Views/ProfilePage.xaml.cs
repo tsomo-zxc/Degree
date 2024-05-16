@@ -1,9 +1,13 @@
+using Degree.MVVM.ViewsModels;
+
 namespace Degree.MVVM.Views;
 
 public partial class ProfilePage : ContentPage
 {
-	public ProfilePage()
-	{
-		InitializeComponent();
-	}
+    public ProfilePage()
+    {
+        InitializeComponent();
+        BindingContext = new ProfilePageViewModel();
+    }
+      
 }

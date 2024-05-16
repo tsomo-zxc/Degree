@@ -17,5 +17,8 @@ namespace Degree
 
             MainPage = new AppShell();
         }
+
+
     }
+
 }

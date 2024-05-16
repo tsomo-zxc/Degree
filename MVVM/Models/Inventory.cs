@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Degree.MVVM.Models
 {
-    [SQLite.Table("Orders")]
-    public class Order : TableData
+    [SQLite.Table("Inventory")]
+    public class Inventory : TableData
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -19,11 +19,15 @@ namespace Degree.MVVM.Models
         public int UserId { get; set; }
 
         [NotNull]
-        public DateTime OrderDate { get; set; }
+        public int ProductId { get; set; }
 
         [NotNull]
-        public decimal TotalAmount { get; set; }
+        public int Quantity { get; set; }
 
-        
+        //[ForeignKey(typeof(User))]
+        //public int UserForeignKey { get; set; }
+
+        //[ForeignKey(typeof(Product))]
+        //public int ProductForeignKey { get; set; }
     }
 }

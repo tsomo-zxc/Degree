@@ -14,8 +14,14 @@
         </ContentView>
         <ContentView IsVisible="{Binding IsLoggedIn}">
             <StackLayout Padding="15">
-                <Label Text="{Binding Username}" FontSize="Medium" />
-                <Label Text="{Binding Email}" FontSize="Medium" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Username: " FontSize="Medium" />
+                    <Label Text="{Binding Username}" FontSize="Medium" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email: " FontSize="Medium" />
+                    <Label Text="{Binding Email}" FontSize="Medium" />
+                </StackLayout>
                 <Button Text="Log out" Command="{Binding LogOutCommand}"/>
             </StackLayout>
         </ContentView>

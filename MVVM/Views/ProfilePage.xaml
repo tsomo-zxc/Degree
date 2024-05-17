@@ -12,6 +12,7 @@
                 <Button Text="Login" Command="{Binding NavigateToLoginCommand}" />
             </StackLayout>
         </ContentView>
+        
         <ContentView IsVisible="{Binding IsLoggedIn}">
             <StackLayout Padding="15">
                 <StackLayout Orientation="Horizontal">
@@ -25,5 +26,6 @@
                 <Button Text="Log out" Command="{Binding LogOutCommand}"/>
             </StackLayout>
         </ContentView>
+        
     </StackLayout>
 </ContentPage>

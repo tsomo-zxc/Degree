@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Degree.MVVM.Models
 {
-    [Table("Products")]
-    public class Product : TableData    {
-       
-
+    [SQLite.Table("Products")]
+    public class Product : TableData    
+    {
         [MaxLength(100), NotNull,Unique]
         public string Name { get; set; }
 

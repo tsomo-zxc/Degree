@@ -58,14 +58,18 @@ namespace Degree.MVVM.ViewsModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Login successful", "OK");
                     // Navigate to the main page or dashboard
+                   
+                    Preferences.Default.Set("IsLoggedIn", true);
+                    Preferences.Default.Set("Username", _username);
+                    MessagingCenter.Send<object>(this, "UsernameChanged");
+
+                    await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
                 }
                 else
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Invalid username or password", "OK");
                 }
-                Preferences.Default.Set("IsLoggedIn", true);                
-                Preferences.Default.Set("Username", _username);                
-                await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
+                
             }
             catch (Exception ex)
             {

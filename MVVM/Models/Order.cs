@@ -12,17 +12,18 @@ namespace Degree.MVVM.Models
     [SQLite.Table("Orders")]
     public class Order : TableData
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
+       
         [NotNull]
         public int UserId { get; set; }
+        [NotNull]
+        public int ProductId { get; set; }
 
         [NotNull]
         public DateTime OrderDate { get; set; }
 
         [NotNull]
         public decimal TotalAmount { get; set; }
+       
 
         
     }

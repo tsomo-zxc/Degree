@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Degree.MVVM.Views.OrderPage"
+             xmlns:local="clr-namespace:Degree.Converters"
+             x:Class="Degree.MVVM.Views.OrderPage"             
              Title="OrderPage">
-    <StackLayout>
-        <Label Text="Welcome to the Orders Page" 
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout Padding="10">
+            <ContentView IsVisible="{Binding IsLoggedIn}">
+                <StackLayout Padding="10">
+                    <Label Text="Orders" FontSize="Large" HorizontalOptions="Center" />
+                    <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding OrderInfo}" Detail="{Binding OrderDate}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="Create New Order" Command="{Binding CreateOrderCommand}" />
+                    <Button Text="View Order Details" Command="{Binding ViewOrderDetailsCommand}" IsEnabled="{Binding IsOrderSelected}" />
+                </StackLayout>
+            </ContentView>
+        <ContentView IsVisible="{Binding IsLoggedIn , Converter={StaticResource InverseBooleanConverter}}">
+            <StackLayout Padding="15" >
+                <Label Text="Log in or register at Profile Page" FontSize="Large" HorizontalOptions="Center" />
+            </StackLayout>
+        </ContentView>
     </StackLayout>
+    
+   
 </ContentPage>

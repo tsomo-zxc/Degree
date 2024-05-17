@@ -2,6 +2,7 @@
 using Degree.Repositories;
 using SQLitePCL;
 using Degree.MVVM.Models;
+using Degree.MVVM.Services;
 
 namespace Degree
 {
@@ -23,6 +24,8 @@ namespace Degree
 #endif
             builder.Services.AddSingleton<BaseRepository<Customer>>();
             builder.Services.AddSingleton<BaseRepository<User>>();
+            builder.Services.AddSingleton<BaseRepository<Order>>();
+            builder.Services.AddSingleton<BaseRepository<Product>>();
             return builder.Build();
         }
     }

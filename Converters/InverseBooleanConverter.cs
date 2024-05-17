@@ -11,9 +11,9 @@ namespace Degree.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool boolean)
+            if (value is bool isLoggedIn)
             {
-                return !boolean;
+                return !isLoggedIn;
             }
 
             return false;
@@ -21,12 +21,7 @@ namespace Degree.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool boolean)
-            {
-                return !boolean;
-            }
-
-            return false;
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Degree.MVVM.Abstractions;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,19 +13,22 @@ namespace Degree.MVVM.Models
     [SQLite.Table("Orders")]
     public class Order : TableData
     {
+      
        
-        [NotNull]
+        [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(User))]
         public int UserId { get; set; }
-        [NotNull]
-        public int ProductId { get; set; }
 
         [NotNull]
         public DateTime OrderDate { get; set; }
+        [NotNull]
+        public string Status { get; set; }  
 
         [NotNull]
         public decimal TotalAmount { get; set; }
-       
+        [ManyToOne]
+        public User User { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<OrderItem> OrderItems { get; set; }
 
-        
     }
 }

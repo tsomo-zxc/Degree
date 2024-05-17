@@ -1,5 +1,6 @@
 ﻿using Degree.MVVM.Abstractions;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace Degree.MVVM.Models
     public class OrderItem : TableData
     {
        
-        [NotNull]
+        [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(Order))]
         public int OrderId { get; set; }
 
         [NotNull]
@@ -24,6 +25,8 @@ namespace Degree.MVVM.Models
 
         [NotNull]
         public decimal UnitPrice { get; set; }
- 
+        [ManyToOne]
+        public Order Order { get; set; }
+
     }
 }

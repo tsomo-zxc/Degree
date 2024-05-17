@@ -12,8 +12,7 @@ namespace Degree.MVVM.Models
     [SQLite.Table("Inventory")]
     public class Inventory : TableData
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+       
 
         [NotNull]
         public int UserId { get; set; }

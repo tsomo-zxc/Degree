@@ -1,5 +1,6 @@
 ﻿using Degree.MVVM.Abstractions;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,9 @@ namespace Degree.MVVM.Models
 
         [MaxLength(500)]
         public string Description { get; set; }
+        [NotNull, MaxLength(255)]
+        public string ImageUrl { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

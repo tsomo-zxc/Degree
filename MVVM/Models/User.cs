@@ -27,11 +27,10 @@ namespace Degree.MVVM.Models
             [MaxLength(100), Unique, NotNull]
             public string Email { get; set; }
 
-            //[SQLiteNetExtensions.Attributes.ForeignKey(typeof(Order))]
-            //public int OrderId { get; set; }
-            //[OneToMany(CascadeOperations=CascadeOperation.All)]
-            //public List<Order> Orders { get; set; }
-        
+
+            [OneToMany(CascadeOperations = CascadeOperation.All)]
+            public List<Order> Orders { get; set; }
+
     }
     
 }

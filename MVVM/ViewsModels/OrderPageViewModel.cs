@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmHelpers;
+using Degree.MVVM.Views;
 
 namespace Degree.MVVM.ViewsModels
 {

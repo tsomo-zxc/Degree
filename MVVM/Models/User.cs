@@ -26,8 +26,7 @@ namespace Degree.MVVM.Models
 
             [MaxLength(100), Unique, NotNull]
             public string Email { get; set; }
-
-
+            
             [OneToMany(CascadeOperations = CascadeOperation.All)]
             public List<Order> Orders { get; set; }
 

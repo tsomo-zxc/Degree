@@ -20,7 +20,8 @@ namespace Degree
             )
         {
             InitializeComponent();
-          
+            SQLitePCL.Batteries_V2.Init();
+
             UserRepository = userRep;
             OrderRepository = orderRep;
             ProductRepository = productRep;

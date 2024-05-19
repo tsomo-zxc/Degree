@@ -55,6 +55,7 @@ namespace Degree.MVVM.ViewsModels
             // Navigate to a page where the user can create a new order
            
             await Application.Current.MainPage.Navigation.PushAsync(new CreateOrderPage(CurrentUser));
+            Refresh();
         }
 
         private async void OnViewOrderDetails()
@@ -62,7 +63,7 @@ namespace Degree.MVVM.ViewsModels
             if (SelectedOrder == null) return;
 
             // Navigate to a page showing the order details
-            //await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage(SelectedOrder));
+            await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage(SelectedOrder));
         }
 
         private void Refresh()

@@ -120,5 +120,10 @@ namespace Degree.Repositories
         public void SaveItemWithChildren(T item, bool recursive = false) {
             connection.InsertWithChildren(item, recursive);
         }
+
+        public void SaveItemWithAncestors(T item, bool recursive = false)
+        {
+            
+        }
     }
 }

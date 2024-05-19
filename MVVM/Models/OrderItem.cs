@@ -17,14 +17,13 @@ namespace Degree.MVVM.Models
         [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(Order))]
         public int OrderId { get; set; }
 
-        [NotNull]
-        public int ProductId { get; set; }
+        [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(Product))]
+        public string ProductName { get; set; }
 
         [NotNull]
         public int Quantity { get; set; }
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public Order Order { get; set; }
-
+        public  Product Product { get; set; }
     }
 }

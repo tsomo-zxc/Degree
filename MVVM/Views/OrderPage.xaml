@@ -7,6 +7,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <local:SelectedOrderToVisibilityConverter x:Key="SelectedOrderToVisibilityConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -15,13 +16,27 @@
             <ContentView IsVisible="{Binding IsLoggedIn}">
                 <StackLayout Padding="10">
                     <Label Text="Orders" FontSize="Large" HorizontalOptions="Center" />
-                    <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell Text="{Binding OrderInfo}" Detail="{Binding OrderDate}" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                <CollectionView ItemsSource="{Binding Orders}" SelectionMode="Single" SelectedItem="{Binding SelectedOrder}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding Status}" FontSize="16" FontAttributes="Bold" />
+                                <Label Grid.Row="1" Text="{Binding OrderDate}" FontSize="14" />
+                                <Label Grid.Row="2" Text="{Binding TotalAmount, StringFormat='Total amount: {0:C}'}" FontSize="14" HorizontalOptions="End" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    </CollectionView>
+
                     <Button Text="Create New Order" Command="{Binding CreateOrderCommand}" />
                     <Button Text="View Order Details" Command="{Binding ViewOrderDetailsCommand}" IsEnabled="{Binding IsOrderSelected}" />
                 </StackLayout>

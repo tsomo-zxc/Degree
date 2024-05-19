@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+
 namespace Degree.MVVM.ViewsModels
 {
 
@@ -71,22 +72,37 @@ namespace Degree.MVVM.ViewsModels
         { 
             OrderItems=new List<OrderItem>();
             Order.UserId = CurrentUser.Id;
-            Order.TotalAmount = AddedProducts.Values.Sum();
+            decimal sum = 0;
+
+            foreach (var item in AddedProducts)
+            {
+                if (item.Value == 0)
+                {
+                    AddedProducts.Remove(item.Key);
+                }
+            }
+
+            foreach (var item in AddedProducts)
+            {
+                sum += item.Value * item.Key.Price;
+            }
+            Order.TotalAmount =sum;
 
             foreach (var item in AddedProducts)
             {
                 OrderItem i = new OrderItem
                 {
                     OrderId = Order.Id,
-                    ProductId = item.Key.Id,
-                    Quantity = item.Value
+                    ProductName = item.Key.Name,
+                    Quantity = item.Value,
+                    Product = item.Key
                    
                 };
                 OrderItems.Add(i);
             }
             Order.OrderItems= OrderItems;
             App.OrderRepository.SaveItemWithChildren(Order);
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await Microsoft.Maui.Controls.Application.Current.MainPage.Navigation.PopAsync();
         }
         private void Refresh()
         {

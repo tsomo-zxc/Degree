@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Degree.MVVM.Views.OrderDetailsPage"
+             Title="OrderDetailsPage">
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding Path=ShowenItems}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Text="{Binding Price, StringFormat='{0:C}'}" HorizontalOptions="Center" />
+                            <Label Grid.Column="2" Text="{Binding Quantity}" HorizontalOptions="End" />                            
+                            <Label Grid.Column="3" Text="{Binding TotalPrice,StringFormat='  =  {0}'}" HorizontalOptions="End" />                            
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

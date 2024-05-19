@@ -25,8 +25,7 @@ namespace Degree.MVVM.Models
 
         [NotNull]
         public decimal TotalAmount { get; set; }
-        [ManyToOne]
-        public User User { get; set; }
+
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<OrderItem> OrderItems { get; set; }
 

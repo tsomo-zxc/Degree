@@ -1,5 +1,6 @@
 ﻿using Degree.MVVM.Abstractions;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,20 +14,20 @@ namespace Degree.MVVM.Models
     public class Inventory : TableData
     {
        
-
-        [NotNull]
+        [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(User))]
         public int UserId { get; set; }
 
-        [NotNull]
+        [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(Product))]
         public int ProductId { get; set; }
 
         [NotNull]
         public int Quantity { get; set; }
 
-        //[ForeignKey(typeof(User))]
-        //public int UserForeignKey { get; set; }
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public User User { get; set; }
 
-        //[ForeignKey(typeof(Product))]
-        //public int ProductForeignKey { get; set; }
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public Product Product { get; set; }
+
     }
 }

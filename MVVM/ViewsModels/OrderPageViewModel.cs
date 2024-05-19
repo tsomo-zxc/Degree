@@ -52,9 +52,9 @@ namespace Degree.MVVM.ViewsModels
         private async void OnCreateOrder()
         {
             Refresh();
-            await Application.Current.MainPage.DisplayAlert("Error", Preferences.Get("Username", "NULL"), "OK");
             // Navigate to a page where the user can create a new order
-            await Application.Current.MainPage.Navigation.PushAsync(new CreateOrderPage());
+           
+            await Application.Current.MainPage.Navigation.PushAsync(new CreateOrderPage(CurrentUser));
         }
 
         private async void OnViewOrderDetails()
@@ -68,8 +68,9 @@ namespace Degree.MVVM.ViewsModels
         private void Refresh()
         {
             IsLoggedIn = Preferences.Get("IsLoggedIn", false);
-            CurrentUser = App.UserRepository.GetItem(x => x.Username == Preferences.Get("Username", "NULL"));
-            Orders = App.OrderRepository.GetItems(/*x => x.UserId == CurrentUser.Id*/);  
+            var username = Preferences.Get("Username", "NULL");
+            CurrentUser = App.UserRepository.GetItem(x => x.Username==username);            
+            Orders = App.OrderRepository.GetItems(x => x.UserId == CurrentUser.Id);  
         }
     }
 }

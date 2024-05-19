@@ -14,6 +14,7 @@ namespace Degree.MVVM.Services
         {
             // Retrieve orders from the database
             return App.OrderRepository.GetItems();
+          
         }
 
         public void CreateOrder(Order order)

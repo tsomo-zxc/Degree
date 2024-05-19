@@ -21,19 +21,13 @@ namespace Degree.MVVM.ViewsModels
         public string Username
         {
             get => _username;
-            set
-            {
-                _username = value;
-            }
+            set => _username = value;
         }
 
         public string Password
         {
             get => _password;
-            set
-            {
-                _password = value;
-            }
+            set => _password = value;            
         }
 
         public ICommand LoginCommand { get; }

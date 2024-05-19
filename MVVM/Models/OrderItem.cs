@@ -23,9 +23,7 @@ namespace Degree.MVVM.Models
         [NotNull]
         public int Quantity { get; set; }
 
-        [NotNull]
-        public decimal UnitPrice { get; set; }
-        [ManyToOne]
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Order Order { get; set; }
 
     }

@@ -22,10 +22,11 @@ namespace Degree
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddSingleton<BaseRepository<Customer>>();
             builder.Services.AddSingleton<BaseRepository<User>>();
             builder.Services.AddSingleton<BaseRepository<Order>>();
             builder.Services.AddSingleton<BaseRepository<Product>>();
+            builder.Services.AddSingleton<BaseRepository<OrderItem>>();
+
             return builder.Build();
         }
     }

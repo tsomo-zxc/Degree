@@ -8,8 +8,8 @@
         
         <ContentView IsVisible="{Binding IsLoggedOut}">
             <StackLayout Padding="15" >
-                <Button Margin="10" Text="Register" Command="{Binding NavigateToRegisterCommand} " />
-                <Button Text="Login" Command="{Binding NavigateToLoginCommand}" />
+                <Button  Text="Register" Command="{Binding NavigateToRegisterCommand} " />
+                <Button  Text="Login" Command="{Binding NavigateToLoginCommand}" />
             </StackLayout>
         </ContentView>
         
@@ -24,7 +24,8 @@
                     <Label Text="{Binding Email}" FontSize="Medium" />
                 </StackLayout>
                 <Button Text="Log out" Command="{Binding LogOutCommand}"/>
-            </StackLayout>
+            </StackLayout>           
+            
         </ContentView>
         
     </StackLayout>

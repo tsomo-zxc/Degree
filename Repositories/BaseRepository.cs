@@ -121,9 +121,30 @@ namespace Degree.Repositories
             connection.InsertWithChildren(item, recursive);
         }
 
-        public void SaveItemWithAncestors(T item, bool recursive = false)
+        public List<T> GetItemsWithChildren()
         {
-            
+            try
+            {
+                return connection.GetAllWithChildren<T>().ToList();
+            }
+            catch (Exception ex )
+            {
+
+                StatusMessage = $"Error : {ex.Message}";
+            }
+            return null;
+        }
+        public List<T> GetItemsWithChildren(Expression<Func<T, bool>> expression)
+        {
+            try
+            {
+                return connection.GetAllWithChildren<T>(expression).ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = $"Error : {ex.Message}";
+            }
+            return null;
         }
     }
 }

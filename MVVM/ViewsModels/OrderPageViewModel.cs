@@ -34,6 +34,7 @@ namespace Degree.MVVM.ViewsModels
 
         public ICommand CreateOrderCommand { get; }
         public ICommand ViewOrderDetailsCommand { get; }
+        public ICommand RefreshCommand { get; }
 
         public OrderPageViewModel()
         {
@@ -43,6 +44,7 @@ namespace Degree.MVVM.ViewsModels
             });           
             
             CreateOrderCommand = new Command(OnCreateOrder);
+            RefreshCommand = new Command(OnRefresh);
             ViewOrderDetailsCommand = new Command(OnViewOrderDetails, () => IsOrderSelected);
                       
         }
@@ -57,7 +59,10 @@ namespace Degree.MVVM.ViewsModels
             await Application.Current.MainPage.Navigation.PushAsync(new CreateOrderPage(CurrentUser));
             Refresh();
         }
-
+        private async void OnRefresh()
+        {
+            Refresh();
+        }
         private async void OnViewOrderDetails()
         {
             if (SelectedOrder == null) return;

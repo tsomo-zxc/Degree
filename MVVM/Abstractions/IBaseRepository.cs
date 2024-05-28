@@ -11,10 +11,14 @@ namespace Degree.MVVM.Abstractions
         where T : TableData, new()
     {
         void SaveItem(T item);
+        void SaveItemWithChildren(T item, bool recursive = false);
         void DeleteItem(T item);
         T GetItem(int id);
         T GetItem(Expression<Func<T, bool>> expression);
         List<T> GetItems();
         List<T> GetItems(Expression<Func<T, bool>> expression);
+        List<T> GetItemsWithChildren(Expression<Func<T, bool>> expression);
+        List<T> GetItemsWithChildren();
+        
     }
 }

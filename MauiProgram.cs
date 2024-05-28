@@ -26,6 +26,7 @@ namespace Degree
             builder.Services.AddSingleton<BaseRepository<Order>>();
             builder.Services.AddSingleton<BaseRepository<Product>>();
             builder.Services.AddSingleton<BaseRepository<OrderItem>>();
+            builder.Services.AddSingleton<BaseRepository<Inventory>>();
 
             return builder.Build();
         }

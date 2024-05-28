@@ -7,6 +7,6 @@
     <TabBar>
         <ShellContent Title="Home" Icon="home.png" ContentTemplate="{DataTemplate local:HomePage}" />
         <ShellContent Title="Orders" Icon="order.png" ContentTemplate="{DataTemplate local:OrderPage}" />
-        <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Title="Profile" Icon="profile.svg" ContentTemplate="{DataTemplate local:ProfilePage}" />
     </TabBar>
 </Shell>

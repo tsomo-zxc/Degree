@@ -30,6 +30,6 @@ namespace Degree.MVVM.Models
             [OneToMany(CascadeOperations = CascadeOperation.All)]
             public List<Order> Orders { get; set; }
 
-    }
+        }
     
 }

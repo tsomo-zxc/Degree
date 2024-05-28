@@ -5,45 +5,47 @@
              Title="CreateOrderPage"> 
 
     <StackLayout Margin="20">
-        
-        <StackLayout Orientation="Horizontal">
-            <Label Text="User:  " VerticalOptions="Center" />
-            <Label Text="{Binding CurrentUser.Username}" />
-        </StackLayout>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding CurrentUser.Username, StringFormat='User: {0}'}" Grid.Column="0" />
+            <Label Text="{Binding Order.Status, StringFormat='Status: {0}'}" Grid.Column="1" HorizontalOptions="Center"/>
+        </Grid>
 
         <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
             <Label Text="Order date:  " VerticalOptions="Center"  />
             <DatePicker x:Name="OrderDatePicker" VerticalOptions="CenterAndExpand" Date="{Binding Order.OrderDate}" IsEnabled="False" />
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
-            <Label Text="Status:   " VerticalOptions="Center"  />
-            <Label Text="{Binding Order.Status}" />
-        </StackLayout>
-        <Label Text="Products:" VerticalOptions="Center" Margin="0,20,0,0" />
+       
+        <Label Text="Products:" VerticalOptions="Center" Margin="0,10,0,0" />
 
-        <Picker ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" HorizontalOptions="FillAndExpand" SelectedIndex="1">
+        <Picker Margin="0,10,0,0" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" HorizontalOptions="FillAndExpand" SelectedIndex="1">
             <Picker.ItemDisplayBinding>
                 <Binding Path="Name" />
             </Picker.ItemDisplayBinding>
         </Picker>       
 
         <Label Text="Quantity:" VerticalOptions="Center"  />
-        <Entry x:Name="QuantityEntry" Placeholder="Enter quantity" Text="{Binding Quantity}"  />
+        <Entry Margin="0,10,0,0" x:Name="QuantityEntry" Placeholder="Enter quantity" Text="{Binding Quantity}"  />
         <Button Text="Add product" Command="{Binding AddProductCommand}"  />
-        <ListView ItemsSource="{Binding Path=AProducts}" HasUnevenRows="True">
+        <ListView ItemsSource="{Binding Path=AProducts}" HasUnevenRows="True" RowHeight="35">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding Product.Name}" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Text="{Binding Product.Price, StringFormat='{0:C}'}" HorizontalOptions="Center" />
-                            <Label Grid.Column="2" Text="{Binding Quantity}" HorizontalOptions="End" />
+                            <Label Grid.Column="1" Text="{Binding Product.Price, StringFormat='{0} $'}" HorizontalOptions="Center" />
+                            <Label Grid.Column="2" Text="{Binding Quantity,  StringFormat='{0} pcs'}" HorizontalOptions="End" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

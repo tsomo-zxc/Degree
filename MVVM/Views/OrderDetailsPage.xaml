@@ -10,15 +10,15 @@
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding Name}" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Text="{Binding Price, StringFormat='{0:C}'}" HorizontalOptions="Center" />
-                            <Label Grid.Column="2" Text="{Binding Quantity}" HorizontalOptions="End" />                            
-                            <Label Grid.Column="3" Text="{Binding TotalPrice,StringFormat='  =  {0}'}" HorizontalOptions="End" />                            
+                            <Label Grid.Column="1" Text="{Binding Price, StringFormat='{0} $'}" HorizontalOptions="Center" />
+                            <Label Grid.Column="2" Text="{Binding Quantity, StringFormat='{0} pcs '}" HorizontalOptions="End" />
+                            <Label Grid.Column="3" Text="{Binding TotalPrice,StringFormat='  =  {0} $'}" HorizontalOptions="End" />                            
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

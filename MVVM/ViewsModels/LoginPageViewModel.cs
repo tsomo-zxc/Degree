@@ -50,8 +50,7 @@ namespace Degree.MVVM.ViewsModels
                 User user = App.UserRepository.GetItem(x => x.Username == _username);
                 if (user != null && user.PasswordHash == HashPassword(_password))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Success", "Login successful", "OK");
-                    // Navigate to the main page or dashboard
+                    await Application.Current.MainPage.DisplayAlert("Success", "Login successful", "OK");                    
                    
                     Preferences.Default.Set("IsLoggedIn", true);
                     Preferences.Default.Set("Username", _username);
@@ -74,8 +73,6 @@ namespace Degree.MVVM.ViewsModels
 
         private string HashPassword(string password)
         {
-            // Here, implement your hashing logic, e.g., using SHA256 or any other hashing algorithm
-            // This is just a placeholder
             return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password));
         }
 

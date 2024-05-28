@@ -10,6 +10,12 @@
             <local:SelectedOrderToVisibilityConverter x:Key="SelectedOrderToVisibilityConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <!--<ContentPage.Title>
+        <Button x:Name="Refresh" Text="Ref" HorizontalOptions="End" Command="{Binding RefreshCommand}" />
+    </ContentPage.Title>-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="refresh.svg"  Command="{Binding RefreshCommand}" />
+    </ContentPage.ToolbarItems>
 
 
     <StackLayout Padding="10">
@@ -31,7 +37,7 @@
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Text="{Binding Status}" FontSize="16" FontAttributes="Bold" />
                                 <Label Grid.Row="1" Text="{Binding OrderDate}" FontSize="14" />
-                                <Label Grid.Row="2" Text="{Binding TotalAmount, StringFormat='Total amount: {0:C}'}" FontSize="14" HorizontalOptions="End" />
+                                <Label Grid.Row="2" Text="{Binding TotalAmount, StringFormat='Total amount: {0} $'}" FontSize="14" HorizontalOptions="End" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

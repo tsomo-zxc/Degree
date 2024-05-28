@@ -22,6 +22,8 @@ namespace Degree.MVVM.ViewsModels
 
         private bool _isLoggedIn;
 
+        public List<Inventory> Inventories { get; set; }
+
         public bool IsLoggedIn
         {
             get => _isLoggedIn;
@@ -75,6 +77,11 @@ namespace Degree.MVVM.ViewsModels
                 {
                     Email = user.Email;
                 }
+
+                // Inventory loading
+                Inventories = App.InventoryRepository.GetItemsWithChildren(x => x.UserId == user.Id);
+
+
             }
         }
     }

@@ -41,7 +41,8 @@ namespace Degree.MVVM.ViewsModels
             Order.OrderDate = DateTime.Now;
             Order.Status = OrderStatus.Pending;
             Products = App.ProductRepository.GetItems();
-            SelectedProduct = Products[0];
+            if(Products.Count != 0)
+             SelectedProduct = Products[0];
             AProducts = new List<AProduct>();
             
             AddedProducts = new Dictionary<Product, int>();   
@@ -63,9 +64,9 @@ namespace Degree.MVVM.ViewsModels
         private void AddProduct()
         {   
             if(AddedProducts.ContainsKey(SelectedProduct))
-            AddedProducts[SelectedProduct] += Quantity;
+                AddedProducts[SelectedProduct] += Quantity;
             else
-            AddedProducts.Add(SelectedProduct, Quantity);
+                AddedProducts.Add(SelectedProduct, Quantity);
             Refresh();
         }
         private async void AddOrder() 
@@ -102,7 +103,7 @@ namespace Degree.MVVM.ViewsModels
             }
             Order.OrderItems= OrderItems;
             App.OrderRepository.SaveItemWithChildren(Order);
-            await Microsoft.Maui.Controls.Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
         private void Refresh()
         {

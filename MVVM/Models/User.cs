@@ -29,7 +29,9 @@ namespace Degree.MVVM.Models
             
             [OneToMany(CascadeOperations = CascadeOperation.All)]
             public List<Order> Orders { get; set; }
+            [OneToMany(CascadeOperations = CascadeOperation.All)]
+            public List<Inventory> UserInventory { get; set; }
 
-        }
+    }
     
 }

@@ -120,7 +120,10 @@ namespace Degree.Repositories
         public void SaveItemWithChildren(T item, bool recursive = false) {
             connection.InsertWithChildren(item, recursive);
         }
-
+        public void UpdateItemWithChildren(T item)
+        {
+            connection.UpdateWithChildren(item);
+        }
         public List<T> GetItemsWithChildren()
         {
             try
@@ -146,5 +149,7 @@ namespace Degree.Repositories
             }
             return null;
         }
+
+
     }
 }

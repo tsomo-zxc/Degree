@@ -18,13 +18,10 @@ namespace Degree.MVVM.Models
         public int UserId { get; set; }
 
         [NotNull, SQLiteNetExtensions.Attributes.ForeignKey(typeof(Product))]
-        public int ProductId { get; set; }
+        public string ProductName { get; set; }
 
         [NotNull]
         public int Quantity { get; set; }
-
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public User User { get; set; }
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Product Product { get; set; }

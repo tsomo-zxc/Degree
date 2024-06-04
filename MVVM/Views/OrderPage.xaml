@@ -45,6 +45,7 @@
 
                     <Button Text="Create New Order" Command="{Binding CreateOrderCommand}" />
                     <Button Text="View Order Details" Command="{Binding ViewOrderDetailsCommand}" IsEnabled="{Binding IsOrderSelected}" />
+                    <Button Text="Accept Order" Command="{Binding AcceptOrderCommand}" IsEnabled="{Binding IsOrderSelected}" />
                 </StackLayout>
             </ContentView>
         <ContentView IsVisible="{Binding IsLoggedIn , Converter={StaticResource InverseBooleanConverter}}">

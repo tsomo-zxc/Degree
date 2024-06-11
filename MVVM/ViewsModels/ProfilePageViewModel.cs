@@ -79,7 +79,7 @@ namespace Degree.MVVM.ViewsModels
                 }
 
                 // Inventory loading
-                Inventories = App.InventoryRepository.GetItemsWithChildren(x => x.UserId == user.Id);
+                Inventories = App.InventoryRepository.GetItems(x => x.UserId == user.Id);
 
 
             }

@@ -11,12 +11,13 @@ namespace Degree.MVVM.ViewsModels
     public class ShowenItem 
     {
         public string Name { get; set; }
+        public string Description { get; set; }
         public decimal Price { get; set; }
         public int Quantity  { get; set; }
         public decimal TotalPrice { get; set; }
-        public ShowenItem(string name,decimal price,int quantity) {
+        public ShowenItem(string name,string description,decimal price,int quantity) {
         
-        Name= name; Price = price; Quantity = quantity; TotalPrice = price * Quantity;
+        Name= name; Description =description; Price = price; Quantity = quantity; TotalPrice = price * Quantity;
         } 
     }
 
@@ -39,7 +40,8 @@ namespace Degree.MVVM.ViewsModels
             {
                 var name = App.ProductRepository.GetItem(x => x.Name == item.ProductName).Name;
                 var price = App.ProductRepository.GetItem(x => x.Name == item.ProductName).Price;
-                var i = new ShowenItem(name, price, item.Quantity);
+                var description = App.ProductRepository.GetItem(x => x.Name == item.ProductName).Description;
+                var i = new ShowenItem(name, description, price, item.Quantity);
                 ShowenItems.Add(i);
             }
             

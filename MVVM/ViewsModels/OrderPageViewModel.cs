@@ -109,7 +109,9 @@ namespace Degree.MVVM.ViewsModels
             IsLoggedIn = Preferences.Get("IsLoggedIn", false);
             var username = Preferences.Get("Username", "NULL");
             CurrentUser = App.UserRepository.GetItem(x => x.Username==username);            
-            Orders = App.OrderRepository.GetItems(x => x.UserId == CurrentUser.Id);  
+            var orders = App.OrderRepository.GetItems(x => x.UserId == CurrentUser.Id);
+            Orders = orders.OrderByDescending(x => x.Id).ToList();
+            
         }
     }
 }

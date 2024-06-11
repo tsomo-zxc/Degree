@@ -24,6 +24,24 @@
                     <Label Text="{Binding Email}" FontSize="Medium" />
                 </StackLayout>
                 <Button Text="Log out" Command="{Binding LogOutCommand}"/>
+                <Label Text="Inventory: " FontSize="Large" />
+                <ListView ItemsSource="{Binding Path=Inventories}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="Auto" />                                        
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding ProductName}" FontAttributes="Bold" />                              
+                                                                  
+                                    <Label Grid.Column="2" Text="{Binding Quantity, StringFormat='{0} pcs '}" HorizontalOptions="End" />                                   
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>           
             
         </ContentView>

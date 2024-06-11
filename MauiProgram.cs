@@ -3,6 +3,7 @@ using Degree.Repositories;
 using SQLitePCL;
 using Degree.MVVM.Models;
 using Degree.MVVM.Services;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Degree
 {
@@ -12,8 +13,7 @@ namespace Degree
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
+                .UseMauiApp<App>().UseSkiaSharp()               .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -27,6 +27,7 @@ namespace Degree
             builder.Services.AddSingleton<BaseRepository<Product>>();
             builder.Services.AddSingleton<BaseRepository<OrderItem>>();
             builder.Services.AddSingleton<BaseRepository<Inventory>>();
+            builder.Services.AddSingleton<BaseRepository<InventoryChangeLogs>>();
 
             return builder.Build();
         }

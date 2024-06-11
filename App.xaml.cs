@@ -12,13 +12,15 @@ namespace Degree
         public static BaseRepository<Product> ProductRepository { get; private set; }
         public static BaseRepository<OrderItem> OrderItemRepository { get; private set; }
         public static BaseRepository<Inventory> InventoryRepository { get; private set; }
+        public static BaseRepository<InventoryChangeLogs> InventoryLogsRepository { get; private set; }
 
         public App(            
             BaseRepository<User> userRep
             ,BaseRepository<Order> orderRep   
             ,BaseRepository<Product> productRep,
             BaseRepository<OrderItem> orderItemRep,
-            BaseRepository<Inventory> inventoryRep
+            BaseRepository<Inventory> inventoryRep,
+            BaseRepository<InventoryChangeLogs> inventoryLogs
             )
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Degree
             ProductRepository = productRep;
             OrderItemRepository = orderItemRep;
             InventoryRepository = inventoryRep;
+            InventoryLogsRepository = inventoryLogs;
             MainPage = new AppShell();
            
         }
